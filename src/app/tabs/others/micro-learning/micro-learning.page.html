@@ -1,0 +1,28 @@
+<ion-content>
+    <div class="page-container has-header" (scroll)="checkScroll($event)">
+        <ion-card class="video-container" *ngFor="let video of videos">
+            <img [src]="api + video.thumbnail_link" alt=""/>
+            <ion-card-header class="ion-padding">
+                <ion-row>
+                    <ion-col size="8">
+                        <ion-card-title class="font-poppins">
+                            {{language.getCurrentLanguage() == 'english' ? video.title_in_english : video.title_in_french}}
+                        </ion-card-title>
+                        <ion-card-subtitle class="font-poppins">
+                            {{language.getCurrentLanguage() == 'english' ? video.description_in_english : video.description_in_french}}
+                        </ion-card-subtitle>
+                    </ion-col>
+                    <ion-col size="4">
+                        <ion-button class="gradient-green-button play-video-button" type="button" expand="block"
+                                    color="primary" (click)="navigateToVideoSummary(video)">
+                            {{language.getWordByLanguage('playVideo')}}
+                        </ion-button>
+                        <ion-card-subtitle class="font-poppins">
+                          {{video.duration}}  mins
+                        </ion-card-subtitle>
+                    </ion-col>
+                </ion-row>
+            </ion-card-header>
+        </ion-card>
+    </div>
+</ion-content>

@@ -1,0 +1,19 @@
+<div class="page-container" [ngStyle]="{background: 'url(' + api + image + ')'}">
+    <ion-card class="wide-full hide-box-shadow">
+        <ion-card-header class="ion-padding">
+            <ion-toolbar>
+                <ion-buttons slot="start">
+                    <ion-button slot="icon-only" (click)="dismissModal()">
+                        <ion-icon name="arrow-back" color="light"></ion-icon>
+                    </ion-button>
+                </ion-buttons>
+                <ion-title color="light">{{language.getWordByLanguage('mindfulExercise')}}</ion-title>
+            </ion-toolbar>
+        </ion-card-header>
+    </ion-card>
+    <div class="buttons-container ion-padding" style="margin-top:8px;">
+        <ion-button *ngIf="paused" class="gradient-green-button" type="button" expand="block" color="primary" (click)="play()">PLAY</ion-button>
+        <ion-button *ngIf="!paused" class="gradient-green-button" type="button" expand="block" color="primary" (click)="pause()">PAUSE</ion-button>
+    </div>
+</div>
+<audio id="audio-player" [src]="api + sound" autoplay playsinline loop></audio>
